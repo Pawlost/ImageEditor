@@ -1,8 +1,62 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="cz.sspbrno.editor.controlers.Editor"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" minHeight="500.0" minWidth="600.0" prefHeight="623.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.sspbrno.editor.controlers.Editor">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+        <RadioButton layoutX="576.0" layoutY="561.0" mnemonicParsing="false" text="Original Image" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="76.0" />
+        <RadioButton disable="true" layoutX="577.0" layoutY="585.0" mnemonicParsing="false" text="Modified Image" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="69.0" />
+        <Button layoutX="576.0" layoutY="457.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="159.0" text="Restore Original Image" AnchorPane.bottomAnchor="123.0" AnchorPane.rightAnchor="17.0" />
+        <Button disable="true" layoutX="576.0" layoutY="507.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="159.0" text="Generate Image" AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="17.0" />
+        <Button layoutX="576.0" layoutY="55.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Select Image File" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="55.0" />
+        <Button layoutX="576.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Edit Matrix" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="86.0" />
+        <Button disable="true" layoutX="576.0" layoutY="227.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Apply Matrix Filter" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="227.0" />
+        <MenuBar layoutY="2.0" prefHeight="17.0" prefWidth="752.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#loadImage" text="Load" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveImage" text="Save" />
+                    </items>
+                </Menu>
+                <Menu fx:id="menuFilters" mnemonicParsing="false" text="Filters">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Default" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="About">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Info" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Exit">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
+               </items></Menu>
+            </menus>
+        </MenuBar>
+        <ImageView fx:id="miniPicture" fitHeight="100.0" fitWidth="136.0" layoutX="584.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="403.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="120.0">
+         <image>
+            <Image url="@_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" />
+         </image></ImageView>
+        <ImageView fx:id="picture" fitHeight="558.0" fitWidth="538.0" layoutX="23.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="191.0" AnchorPane.topAnchor="36.0">
+         <image>
+            <Image url="@_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" />
+         </image></ImageView>
+      <TextArea layoutX="577.0" layoutY="262.0" prefHeight="186.0" prefWidth="159.0" AnchorPane.bottomAnchor="175.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="262.0" />
+    </children>
+</AnchorPane>

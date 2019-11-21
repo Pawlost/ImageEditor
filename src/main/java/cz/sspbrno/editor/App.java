@@ -1,5 +1,4 @@
 package cz.sspbrno.editor;
-import java.io.File;
     
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +15,9 @@ public class App extends Application {
         @Override
         public void start(Stage primaryStage) throws Exception{
             Parent root = new FXMLLoader(getClass().getClassLoader().getResource("editor.fxml")).load();
-            primaryStage.setTitle("Hello World");
-            primaryStage.setScene(new Scene(root, 300, 275));
+            primaryStage.setScene(new Scene(root, 800, 700));
+            primaryStage.setMinWidth(780);
+            primaryStage.setMinHeight(650);
             primaryStage.show();
         }
 }
