@@ -1,31 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" minHeight="500.0" minWidth="600.0" prefHeight="623.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.sspbrno.editor.controlers.Editor">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.sspbrno.editor.controlers.Editor">
     <children>
-        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-        <RadioButton layoutX="576.0" layoutY="561.0" mnemonicParsing="false" text="Original Image" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="76.0" />
-        <RadioButton disable="true" layoutX="577.0" layoutY="585.0" mnemonicParsing="false" text="Modified Image" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="69.0" />
-        <Button layoutX="576.0" layoutY="457.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="159.0" text="Restore Original Image" AnchorPane.bottomAnchor="123.0" AnchorPane.rightAnchor="17.0" />
-        <Button disable="true" layoutX="576.0" layoutY="507.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="159.0" text="Generate Image" AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="17.0" />
-        <Button layoutX="576.0" layoutY="55.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Select Image File" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="55.0" />
-        <Button layoutX="576.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Edit Matrix" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="86.0" />
-        <Button disable="true" layoutX="576.0" layoutY="227.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Apply Matrix Filter" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="227.0" />
-        <MenuBar layoutY="2.0" prefHeight="17.0" prefWidth="752.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+        <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
@@ -33,30 +13,52 @@
                         <MenuItem mnemonicParsing="false" onAction="#saveImage" text="Save" />
                     </items>
                 </Menu>
-                <Menu fx:id="menuFilters" mnemonicParsing="false" text="Filters">
+                <Menu mnemonicParsing="false" text="Filters">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Default" />
+                        <MenuItem fx:id="negativeButton" disable="true" mnemonicParsing="false" onAction="#negative" text="Negative" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="About">
+                <Menu fx:id="menuAbout" mnemonicParsing="false" text="About">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Info" />
+                        <MenuItem fx:id="menuAboutItem" mnemonicParsing="false" text="About" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Exit">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
-               </items></Menu>
+                <Menu fx:id="menuExit" mnemonicParsing="false" text="Exit">
+                    <items>
+                        <MenuItem fx:id="menuExitItem" mnemonicParsing="false" onAction="#exit" text="Exit" />
+                    </items>
+                </Menu>
             </menus>
         </MenuBar>
-        <ImageView fx:id="miniPicture" fitHeight="100.0" fitWidth="136.0" layoutX="584.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="403.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="120.0">
-         <image>
-            <Image url="@_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" />
-         </image></ImageView>
-        <ImageView fx:id="picture" fitHeight="558.0" fitWidth="538.0" layoutX="23.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="191.0" AnchorPane.topAnchor="36.0">
-         <image>
-            <Image url="@_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg" />
-         </image></ImageView>
-      <TextArea layoutX="577.0" layoutY="262.0" prefHeight="186.0" prefWidth="159.0" AnchorPane.bottomAnchor="175.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="262.0" />
+        <GridPane layoutX="508.0" layoutY="45.0" prefHeight="352.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="43.599996948242186" minHeight="8.399999046325682" prefHeight="26.20000305175781" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="88.40000095367432" minHeight="10.0" prefHeight="31.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="116.80000534057618" minHeight="8.7999855041504" prefHeight="29.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="187.2000030517578" minHeight="10.0" prefHeight="110.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="104.40001525878904" minHeight="10.0" prefHeight="37.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="116.20003356933591" minHeight="10.0" prefHeight="116.20003356933591" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="61.80002441406248" minHeight="10.0" prefHeight="61.80002441406248" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="48.0" minHeight="8.999975585937477" prefHeight="48.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="29.600012207031227" minHeight="0.0" prefHeight="8.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="24.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Button alignment="CENTER" minWidth="150.0" mnemonicParsing="false" text="Edit Matrix" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                <Button alignment="CENTER" minWidth="150.0" mnemonicParsing="false" onAction="#loadImage" text="Select Image File" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                <Button alignment="CENTER" contentDisplay="CENTER" minWidth="150.0" mnemonicParsing="false" text="Apply  Matrix Filter" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                <TextArea prefHeight="117.0" prefWidth="192.0" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#generateImage" prefHeight="50.0" prefWidth="196.0" text="Generate Image" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="196.0" text="Restore Original Image" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                <RadioButton fx:id="originalImage" disable="true" mnemonicParsing="false" onAction="#setOriginaImage" text="Original Image" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+                <RadioButton fx:id="modifiedImage" disable="true" mnemonicParsing="false" onAction="#setModifiedImage" selected="true" text="Modified Image" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
+                <ImageView fitHeight="114.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+            </children>
+        </GridPane>
+        <ImageView fx:id="picture" fitHeight="458.0" fitWidth="453.0" layoutX="22.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="215.0" AnchorPane.topAnchor="40.0" />
     </children>
 </AnchorPane>
