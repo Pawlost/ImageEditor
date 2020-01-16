@@ -20,7 +20,7 @@
                 </Menu>
                 <Menu fx:id="menuAbout" mnemonicParsing="false" text="About">
                     <items>
-                        <MenuItem fx:id="menuAboutItem" mnemonicParsing="false" text="About" />
+                        <MenuItem fx:id="menuAboutItem" mnemonicParsing="false" text="About" onAction="#about" />
                     </items>
                 </Menu>
                 <Menu fx:id="menuExit" mnemonicParsing="false" text="Exit">
@@ -35,15 +35,15 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="43.599996948242186" minHeight="8.399999046325682" prefHeight="26.20000305175781" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="88.40000095367432" minHeight="10.0" prefHeight="31.0" valignment="CENTER" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="116.80000534057618" minHeight="8.7999855041504" prefHeight="29.0" valignment="CENTER" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="187.2000030517578" minHeight="10.0" prefHeight="110.0" valignment="CENTER" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="104.40001525878904" minHeight="10.0" prefHeight="37.0" valignment="CENTER" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="116.20003356933591" minHeight="10.0" prefHeight="116.20003356933591" valignment="CENTER" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="61.80002441406248" minHeight="10.0" prefHeight="61.80002441406248" valignment="CENTER" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="48.0" minHeight="8.999975585937477" prefHeight="48.0" valignment="CENTER" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="29.600012207031227" minHeight="0.0" prefHeight="8.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="43" minHeight="8" prefHeight="26" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="88" minHeight="10.0" prefHeight="31.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="116" minHeight="8" prefHeight="29.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="187" minHeight="10.0" prefHeight="110.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="104" minHeight="10.0" prefHeight="37.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="116" minHeight="10.0" prefHeight="116" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="61" minHeight="10.0" prefHeight="61" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="48.0" minHeight="8" prefHeight="48.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="29" minHeight="0.0" prefHeight="8.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="24.0" valignment="CENTER" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
             </rowConstraints>
@@ -53,7 +53,7 @@
                 <Button alignment="CENTER" contentDisplay="CENTER" minWidth="150.0" mnemonicParsing="false" text="Apply  Matrix Filter" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
                 <TextArea prefHeight="117.0" prefWidth="192.0" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                 <Button alignment="CENTER" mnemonicParsing="false" onAction="#generateImage" prefHeight="50.0" prefWidth="196.0" text="Generate Image" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="196.0" text="Restore Original Image" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="196.0" text="Restore Original Image" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" onAction="#restore"/>
                 <RadioButton fx:id="originalImage" disable="true" mnemonicParsing="false" onAction="#setOriginaImage" text="Original Image" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
                 <RadioButton fx:id="modifiedImage" disable="true" mnemonicParsing="false" onAction="#setModifiedImage" selected="true" text="Modified Image" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
                 <ImageView fitHeight="114.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />

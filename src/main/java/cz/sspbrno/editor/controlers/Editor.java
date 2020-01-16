@@ -4,7 +4,11 @@ package cz.sspbrno.editor.controlers;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -19,6 +23,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,14 +35,13 @@ public class Editor implements Initializable {
     public RadioButton originalImage;
     public RadioButton modifiedImage;
     public MenuItem negativeButton;
-    
+
     @FXML
     private ImageView picture;
 
     private Image oImage;
 
     private Image mImage;
-
 
     @FXML
     public void saveImage() {
@@ -126,12 +130,37 @@ public class Editor implements Initializable {
     }
 
     @FXML
-    public void setOriginaImage(ActionEvent actionEvent) {
+    public void about(ActionEvent event) {
+        try {
+            Parent root = new FXMLLoader(getClass().getClassLoader().getResource("About.fxml")).load();
+            Stage stage = new Stage();
+            stage.setTitle("Prase");
+            stage.setScene(new Scene(root, 450, 450));
+            stage.show();
+            // Hide this current window (if this is what you want)
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void restore() {
+        originalImage.fire();
+    }
+
+    @FXML
+    public void setOriginaImage() {
         picture.setImage(oImage);
     }
 
     @FXML
     public void setModifiedImage() {
         picture.setImage(mImage);
+    }
+
+    @FXML
+    public void exitAbout(ActionEvent event) {
+        ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 }
