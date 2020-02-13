@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.sspbrno.editor.controlers.Treshold">
+   <children>
+      <Slider fx:id="slider" layoutX="50.0" layoutY="444.0" max="255.0" prefHeight="16.0" prefWidth="332.0" value="127.5" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+         <opaqueInsets>
+            <Insets left="100.0" right="100.0" />
+         </opaqueInsets>
+      </Slider>
+      <Button fx:id="apply" layoutX="519.0" layoutY="528.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="89.0" text="Apply" AnchorPane.rightAnchor="19.0" />
+      <Button fx:id="cancel" layoutX="389.0" layoutY="527.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="89.0" text="Cancel" />
+      <CheckBox fx:id="auto" layoutX="50.0" layoutY="494.0" mnemonicParsing="false" text="Autimatic Treshold Value" />
+      <ImageView fx:id="picture" fitHeight="425.0" fitWidth="600.0" layoutX="166.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="175.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="text" alignment="CENTER" contentDisplay="CENTER" layoutX="282.0" layoutY="471.0" prefHeight="16.0" prefWidth="73.0" text="127" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="263.0" AnchorPane.rightAnchor="264.0" AnchorPane.topAnchor="471.0" />
+   </children>
+</AnchorPane>

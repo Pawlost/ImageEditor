@@ -16,6 +16,7 @@
                 <Menu mnemonicParsing="false" text="Filters">
                     <items>
                         <MenuItem fx:id="negativeButton" disable="true" mnemonicParsing="false" onAction="#negative" text="Negative" />
+                        <MenuItem fx:id="tresholdButton" disable="true" mnemonicParsing="false" onAction="#threshold" text="Treshold" />
                     </items>
                 </Menu>
                 <Menu fx:id="menuAbout" mnemonicParsing="false" text="About">
