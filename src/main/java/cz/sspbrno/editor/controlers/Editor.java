@@ -23,18 +23,27 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Editor implements Initializable {
-    public RadioButton originalImage;
-    public RadioButton modifiedImage;
-    public MenuItem negativeButton;
-    public MenuItem tresholdButton;
+
+    @FXML
+    private RadioButton originalImage;
+
+    @FXML
+    private RadioButton modifiedImage;
+
+    @FXML
+    private MenuItem negativeButton;
+
+    @FXML
+    private MenuItem tresholdButton;
+
     @FXML
     private ImageView picture;
 
-
+    @FXML
     private Image oImage;
-
-    public static Image mImage;
-
+    
+    @FXML
+    public Image mImage;
 
     @FXML
     public void saveImage() {
@@ -70,26 +79,32 @@ public class Editor implements Initializable {
         Image image = new Image(new FileInputStream(file));
         picture.setImage(image);
         oImage = picture.getImage();
-        negativeButton.setDisable(false);
-        tresholdButton.setDisable(false);
-
+        enableButtons();
     }
 
     @FXML
     public void generateImage() {
-        picture.setImage(SwingFXUtils.toFXImage(makeColoredImage(), null));
-        oImage = picture.getImage();
-        negativeButton.setDisable(false);
+        oImage = SwingFXUtils.toFXImage(makeColoredImage(), null);
+        setOriginaImage();
+        enableButtons();
     }
 
     public BufferedImage makeColoredImage() {
-        BufferedImage bufferedImage = new BufferedImage(600, 600, BufferedImage.TYPE_3BYTE_BGR);
-        for (int i = 0; i < bufferedImage.getWidth(); i++) {
-            for (int j = 0; j < bufferedImage.getHeight(); j++) {
-                bufferedImage.setRGB(i, j, new Color((i + j) % 256, Math.abs(i - j) % 256, (i % (j + 1)) % 256).getRGB());
+        BufferedImage bImage = new BufferedImage(600, 600, BufferedImage.TYPE_3BYTE_BGR);
+        //RED
+        for (int x = 0; x < bImage.getWidth(); x++){
+            for (int y = 0; y < bImage.getHeight()/2; y++){
+                bImage.setRGB(x, y, new Color(Math.abs(255 - y)%255, 0, 0).getRGB());
             }
         }
-        return bufferedImage;
+        int i = 0;
+        for (int x = bImage.getWidth() - 1; x >= 0 ; x--){
+            i ++;
+            for (int y = bImage.getHeight() - 1; y >= bImage.getHeight()/2; y--){
+                bImage.setRGB(y , x, new Color(0, Math.abs(255 - i)%255, 0).getRGB());
+            }
+        }
+        return bImage;
     }
 
     @FXML
@@ -116,6 +131,8 @@ public class Editor implements Initializable {
         final ToggleGroup group = new ToggleGroup();
         originalImage.setToggleGroup(group);
         modifiedImage.setToggleGroup(group);
+        originalImage.setSelected(true);
+        modifiedImage.setSelected(false);
     }
     
     @FXML
@@ -135,19 +152,39 @@ public class Editor implements Initializable {
 
     @FXML
     public void threshold() throws IOException {
-        Treshold.oimage = this.picture.getImage();
-        Parent treshooldSelector = FXMLLoader.load(getClass().getClassLoader().getResource("Treshold.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Treshold.fxml"));
+        Parent treshooldSelector = loader.load();
+        Treshold controler = loader.getController();
+
+        //Initialize stage
         Stage s = new Stage();
-        Treshold.s = s;
         s.setResizable(false);
         s.initStyle(StageStyle.UNDECORATED);
         s.setScene(new Scene(treshooldSelector));
         s.show();
+
+        //Set on action
         s.setOnHiding(windowEvent -> {
             picture.setImage(mImage);
             this.modifiedImage.setDisable(false);
             this.originalImage.setDisable(false);
         });
+
+        controler.getCancelButton().setOnAction(e -> {
+            s.close();
+        });
+
+        controler.getApplyButton().setOnAction(actionEvent -> {
+            mImage = controler.getImage();
+            setModifiedImage();
+        });
+
+        controler.setImage(oImage);
+    }
+
+    private void enableButtons(){
+        tresholdButton.setDisable(false);
+        negativeButton.setDisable(false);
     }
 
     @FXML
@@ -158,16 +195,14 @@ public class Editor implements Initializable {
     @FXML
     public void setOriginaImage() {
         picture.setImage(oImage);
+        originalImage.setSelected(true);
+        modifiedImage.setSelected(false);
     }
 
     @FXML
     public void setModifiedImage() {
         picture.setImage(mImage);
-    }
-
-    public void setOriginaImageB(ActionEvent actionEvent) {
-        setOriginaImage();
-        originalImage.setSelected(true);
-        modifiedImage.setSelected(false);
+        originalImage.setSelected(false);
+        modifiedImage.setSelected(true);
     }
 }
